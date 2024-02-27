@@ -1,8 +1,10 @@
 ---
-const { platform, username } = Astro.props;
+const { url, icon} = Astro.props;
 ---
 
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+<a href={url} target="_blank">
+  <Fragment set:html={icon} />
+<a>
 
 <!-- <style>
   a {

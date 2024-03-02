@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allProjects = await Astro.glob('../pages/projects/*.md');
+---
+
+<BaseLayout>
+  <article class="prose dark:prose-invert min-w-full">
+    <h1>projects</h1>
+    <p>mostly empty for now... but it will fill up... eventually. haha. </p>
+
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
+      {
+        allProjects
+          .reverse()
+          .map((project) => (
+            <a class="px-4 border min-h-12 hover:bg-purple-100" href={project.url}>
+              <p>{project.frontmatter.title}</p>
+              <p>{project.frontmatter.pubDate}</p>
+            </a>
+          ))
+      }
+    </div>
+  </article>
+</BaseLayout>

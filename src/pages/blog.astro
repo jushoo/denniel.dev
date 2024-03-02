@@ -1,30 +1,28 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "blog";
+const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
-<BaseLayout>
-  <article class="prose dark:prose-invert">
-    <h1>{pageTitle}</h1>
-    <h2>... and my crappy blog posts!</h2>
+<BaseLayout title={pageTitle}>
+  <article class="prose dark:prose-invert min-w-full">
+    <h1>all blog posts</h1>
 
     <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and its the first one I build myself!(This is a lie.
-      The tutorial told me to lie *gasp*)
+      view all blog posts here
     </p>
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-
-    <ul>
-      <li><a href="/posts/post-1/">Post 1</a></li>
-      <li><a href="/posts/post-2/">Post 2</a></li>
-      <li><a href="/posts/post-3/">Post 3</a></li>
-    </ul>
+    
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
+      {
+        allPosts
+          .map((post) => (
+          <a class="px-4 border min-h-12 hover:bg-purple-100" href={post.url}>
+              <p>{post.frontmatter.title}</p>
+              <p>{post.frontmatter.pubDate}</p>
+            </a>
+          ))
+      }
+    </div>
   </article>
 </BaseLayout>

@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const allPosts = await Astro.glob("../pages/posts/*.md"); // TODO: Update this to MDX later?
 ---
 
-<BaseLayout>
+<BaseLayout title="home">
   <article class="prose dark:prose-invert min-w-full">
     <h1>hello there!</h1>
     <p>I'm DJ. A random software engineer in the wild</p>

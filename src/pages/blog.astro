@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 const pageTitle = "blog";
 const allPosts = await Astro.glob("../pages/posts/*.md");
@@ -10,19 +10,18 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
   <article class="prose dark:prose-invert min-w-full">
     <h1>all blog posts</h1>
 
-    <p>
-      view all blog posts here
-    </p>
-    
+    <p>view all blog posts here</p>
+
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
       {
-        allPosts
-          .map((post) => (
+        allPosts.map((post) => (
           <a class="px-4 border min-h-12 hover:bg-purple-100" href={post.url}>
-              <p>{post.frontmatter.title}</p>
-              <p class="text-xs text-slate-600">{format(new Date(post.frontmatter.pubDate), 'MMMM dd, yyyy')}</p>
-            </a>
-          ))
+            <p>{post.frontmatter.title}</p>
+            <p class="text-xs text-slate-600">
+              {format(new Date(post.frontmatter.pubDate), "MMMM dd, yyyy")}
+            </p>
+          </a>
+        ))
       }
     </div>
   </article>

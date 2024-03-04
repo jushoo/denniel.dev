@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
-const allProjects = await Astro.glob('../pages/projects/*.md');
+const allProjects = await Astro.glob("../pages/projects/*.md");
 
 const pageTitle = "projects";
 ---
@@ -10,17 +10,21 @@ const pageTitle = "projects";
 <BaseLayout title={pageTitle}>
   <article class="prose dark:prose-invert min-w-full">
     <h1>projects</h1>
-    <p>mostly empty for now... but it will fill up... eventually. haha. </p>
+    <p>mostly empty for now... but it will fill up... eventually. haha.</p>
 
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
       {
-        allProjects
-          .map((project) => (
-            <a class="px-4 border min-h-12 hover:bg-purple-100" href={project.url}>
-              <p>{project.frontmatter.title}</p>
-              <p class="text-xs text-slate-600">{format(new Date(project.frontmatter.pubDate), 'MMMM dd, yyyy')}</p>
-            </a>
-          ))
+        allProjects.map((project) => (
+          <a
+            class="px-4 border min-h-12 hover:bg-purple-100"
+            href={project.url}
+          >
+            <p>{project.frontmatter.title}</p>
+            <p class="text-xs text-slate-600">
+              {format(new Date(project.frontmatter.pubDate), "MMMM dd, yyyy")}
+            </p>
+          </a>
+        ))
       }
     </div>
   </article>

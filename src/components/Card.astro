@@ -1,0 +1,21 @@
+---
+import { format } from "date-fns";
+
+interface Props {
+  url: string;
+  title: string;
+  pubDate: string;
+}
+
+const { url, title, pubDate } = Astro.props;
+---
+
+<a
+  class="px-4 border min-h-12 hover:bg-purple-100 dark:hover:bg-purple-700"
+  href={url}
+>
+  <p>{title}</p>
+  <p class="text-xs text-slate-700 dark:text-slate-100">
+    {format(new Date(pubDate), "MMMM dd, yyyy")}
+  </p>
+</a>

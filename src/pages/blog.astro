@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { format } from "date-fns";
+import Card from "../components/Card.astro";
 
 const pageTitle = "blog";
 const allPosts = await Astro.glob("../pages/posts/*.md");
@@ -15,12 +15,11 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
       {
         allPosts.map((post) => (
-          <a class="px-4 border min-h-12 hover:bg-purple-100" href={post.url}>
-            <p>{post.frontmatter.title}</p>
-            <p class="text-xs text-slate-600">
-              {format(new Date(post.frontmatter.pubDate), "MMMM dd, yyyy")}
-            </p>
-          </a>
+          <Card
+            title={post.frontmatter.title}
+            url={post.url!}
+            pubDate={post.frontmatter.pubDate}
+          />
         ))
       }
     </div>

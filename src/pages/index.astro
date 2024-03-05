@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { format } from "date-fns";
+import Card from "../components/Card.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md"); // TODO: Update this to MDX later?
 ---
@@ -20,15 +20,11 @@ const allPosts = await Astro.glob("../pages/posts/*.md"); // TODO: Update this t
           .reverse()
           .slice(-4)
           .map((post) => (
-            <a
-              class="px-4 border min-h-12 hover:bg-purple-100 dark:hover:bg-purple-700"
-              href={post.url}
-            >
-              <p>{post.frontmatter.title}</p>
-              <p class="text-xs text-slate-700 dark:text-slate-100">
-                {format(new Date(post.frontmatter.pubDate), "MMMM dd, yyyy")}
-              </p>
-            </a>
+            <Card
+              title={post.frontmatter.title}
+              url={post.url!}
+              pubDate={post.frontmatter.pubDate}
+            />
           ))
       }
     </div>

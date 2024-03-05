@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { format } from "date-fns";
+import Card from "../components/Card.astro";
 
 const allProjects = await Astro.glob("../pages/projects/*.md");
 
@@ -15,15 +15,11 @@ const pageTitle = "projects";
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
       {
         allProjects.map((project) => (
-          <a
-            class="px-4 border min-h-12 hover:bg-purple-100"
-            href={project.url}
-          >
-            <p>{project.frontmatter.title}</p>
-            <p class="text-xs text-slate-600">
-              {format(new Date(project.frontmatter.pubDate), "MMMM dd, yyyy")}
-            </p>
-          </a>
+          <Card
+            title={project.frontmatter.title}
+            url={project.url!}
+            pubDate={project.frontmatter.pubDate}
+          />
         ))
       }
     </div>

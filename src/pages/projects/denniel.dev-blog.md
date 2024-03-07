@@ -1,6 +1,9 @@
 ---
+layout: "../../layouts/PostLayout.astro"
 title: denniel.dev blog
-pubDate: 02-03-2024
+pubDate: 2024-03-07
 ---
 
-## This blog
+## WIP
+
+Planning to use `MDX` here for showcasing projects

@@ -17,7 +17,6 @@ const allPosts = await Astro.glob("../pages/posts/*.md"); // TODO: Update this t
     <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
       {
         allPosts
-          .reverse()
           .slice(-4)
           .map((post) => (
             <Card

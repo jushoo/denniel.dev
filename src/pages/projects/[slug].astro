@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={`${project.data.title} — Denniel`} description={project.data.description}>
+  <article>
+    <header class="flex flex-col gap-4">
+      <a href="/projects" class="link font-mono text-xs">← all projects</a>
+      <h1 class="text-3xl font-bold tracking-tight">{project.data.title}</h1>
+      <p class="max-w-xl text-lg leading-relaxed text-ink-soft">
+        {project.data.description}
+      </p>
+      {
+        (project.data.href || project.data.repo) && (
+          <div class="mt-2 flex flex-wrap gap-3">
+            {project.data.href && (
+              <a
+                href={project.data.href}
+                class="btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit live site ↗
+              </a>
+            )}
+            {project.data.repo && (
+              <a
+                href={project.data.repo}
+                class="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View source ↗
+              </a>
+            )}
+          </div>
+        )
+      }
+      {
+        project.data.tags.length > 0 && (
+          <ul class="mt-2 flex flex-wrap gap-2">
+            {project.data.tags.map((tag) => (
+              <li class="rounded-pill border border-line px-2.5 py-0.5 font-mono text-xs text-ink-soft">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div
+      class="prose-neutral mt-10 max-w-none space-y-4 leading-relaxed [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_p]:text-ink-soft"
+    >
+      <Content />
+    </div>
+  </article>
+</Layout>

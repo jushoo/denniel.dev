@@ -1,0 +1,35 @@
+---
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-10 border-b border-line bg-surface/80 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-4">
+    <a href="/" class="text-sm font-semibold tracking-tight">
+      denniel.dev
+    </a>
+    <ul class="flex items-center gap-1">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'rounded-pill px-3 py-1.5 text-sm transition-colors',
+                current === item.href
+                  ? 'bg-muted font-medium text-ink'
+                  : 'text-ink-soft hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

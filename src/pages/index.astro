@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Denniel — Software Developer">
+  <section class="flex flex-col gap-6">
+    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+      Hi, I'm Denniel.
+    </h1>
+    <p class="max-w-xl text-lg leading-relaxed text-ink-soft">
+      I build software for the web. This site shows my projects and my work.
+    </p>
+    <div class="mt-2 flex flex-wrap gap-3">
+      <a href="/projects" class="btn-primary">View projects</a>
+      <a href="mailto:hello@denniel.dev" class="btn-secondary">Get in touch</a>
+    </div>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="mb-6 text-sm font-semibold uppercase tracking-wide text-ink-soft">
+      Selected work
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <a href="/projects" class="card p-6 transition-shadow hover:shadow-sm">
+        <h3 class="font-semibold">Project one</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          A short description of the project. Two lines maximum.
+        </p>
+      </a>
+      <a href="/projects" class="card p-6 transition-shadow hover:shadow-sm">
+        <h3 class="font-semibold">Project two</h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+          A short description of the project. Two lines maximum.
+        </p>
+      </a>
+    </div>
+  </section>
+</Layout>

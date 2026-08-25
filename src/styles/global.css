@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
+
+  --color-surface: #ffffff;
+  --color-muted: #f9fafb;
+  --color-line: #e5e7eb;
+  --color-ink: #171717;
+  --color-ink-soft: #6b7280;
+  --color-accent: #171717;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-ink font-sans antialiased;
+}
+
+::selection {
+  @apply bg-ink text-surface;
+}
+
+/* Card primitive */
+.card {
+  @apply rounded-card border border-line bg-surface;
+}
+
+/* Button primitives */
+.btn,
+.btn-primary,
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-pill px-5 py-2.5
+    text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-ink text-surface hover:bg-neutral-800;
+}
+
+.btn-secondary {
+  @apply border border-line bg-surface text-ink hover:bg-muted;
+}
+
+/* Subtle link */
+.link {
+  @apply text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline;
+}

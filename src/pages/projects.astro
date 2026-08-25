@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Project one',
+    description: 'A short description of the project.',
+    tags: ['Astro', 'TypeScript'],
+  },
+  {
+    title: 'Project two',
+    description: 'A short description of the project.',
+    tags: ['Node.js', 'PostgreSQL'],
+  },
+];
+---
+
+<Layout title="Projects — Denniel">
+  <h1 class="text-3xl font-bold tracking-tight">Projects</h1>
+  <p class="mt-4 max-w-xl text-lg text-ink-soft">
+    A selection of things I built.
+  </p>
+  <div class="mt-10 grid gap-4 sm:grid-cols-2">
+    {
+      projects.map((project) => (
+        <article class="card p-6 transition-shadow hover:shadow-sm">
+          <h2 class="font-semibold">{project.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+            {project.description}
+          </p>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <li class="rounded-pill border border-line px-2.5 py-0.5 font-mono text-xs text-ink-soft">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

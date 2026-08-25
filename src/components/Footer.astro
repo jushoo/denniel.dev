@@ -1,5 +1,5 @@
 ---
-
+import GitHubIcon from './icons/GitHubIcon.astro';
 ---
 
 <footer class="border-t border-line">
@@ -8,7 +8,8 @@
   >
     <p>&copy; {new Date().getFullYear()} denniel.dev</p>
     <div class="flex items-center gap-4">
-      <a href="https://github.com/jushoo" class="link" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/jushoo" class="link inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
+        <GitHubIcon size={16} />
         GitHub
       </a>
       <a

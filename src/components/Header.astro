@@ -4,7 +4,7 @@ const nav = [
   { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
 ];
-const current = Astro.url.pathname;
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="sticky top-0 z-10 border-b border-line bg-surface/80 backdrop-blur">

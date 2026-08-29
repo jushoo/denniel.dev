@@ -79,15 +79,16 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
     button.setAttribute('aria-label', `Theme: ${theme}`);
   }
 
-  apply(storedTheme());
+  let current = storedTheme();
+  apply(current);
 
   button.addEventListener('click', () => {
-    const next = order[(order.indexOf(storedTheme()) + 1) % order.length];
+    current = order[(order.indexOf(current) + 1) % order.length];
     try {
-      localStorage.setItem(storageKey, next);
+      localStorage.setItem(storageKey, current);
     } catch {
       /* keep in-memory theme; nothing to persist */
     }
-    apply(next);
+    apply(current);
   });
 </script>

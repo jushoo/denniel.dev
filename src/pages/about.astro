@@ -1,17 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SkillIcon from '../components/SkillIcon.astro';
+
+const skills = [
+  { name: 'TypeScript', icon: 'typescript' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'Python', icon: 'python' },
+  { name: 'React', icon: 'react' },
+  { name: 'React Native', icon: 'reactnative' },
+  { name: 'Flutter', icon: 'flutter' },
+  { name: 'Astro', icon: 'astro' },
+  { name: 'Node.js', icon: 'nodejs' },
+  { name: 'Fastify', icon: 'fastify' },
+  { name: 'Prisma', icon: 'prisma' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'Tailwind CSS', icon: 'tailwindcss' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Git', icon: 'git' },
+];
+
+const experience = [
+  {
+    role: 'Software Developer',
+    company: 'Company Name',
+    period: '2024 — Present',
+    summary:
+      'One or two sentences about what you own, what you built, and the impact it had.',
+  },
+  {
+    role: 'Junior Developer',
+    company: 'Company Name',
+    period: '2022 — 2024',
+    summary:
+      'One or two sentences about your responsibilities and what you learned.',
+  },
+];
+
+const education = [
+  {
+    degree: 'B.Sc. Computer Science',
+    school: 'University Name',
+    period: '2018 — 2022',
+  },
+];
 ---
 
 <Layout title="About — Denniel">
-  <h1 class="text-3xl font-bold tracking-tight">About</h1>
-  <div class="mt-6 space-y-4 leading-relaxed text-ink-soft">
-    <p>
-      I am DJ. I build software for the web and mobile phones. This page tells who I am and
-      what I do.
+  <header class="flex flex-col gap-3">
+    <h1 class="text-4xl font-bold tracking-tight">Denniel Joshua</h1>
+    <p class="text-lg text-ink-soft">
+      Software developer — web and mobile. Placeholder title line here.
     </p>
-    <p>
-      Write more about yourself here: your skills, your experience, and what you
-      look for.
-    </p>
-  </div>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink-soft">
+      <a href="mailto:denniel.joshua@gmail.com" class="link">denniel.joshua@gmail.com</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/yourhandle" class="inline-flex items-center gap-1.5 transition-colors hover:text-ink">
+        <SkillIcon name="github" class="h-4 w-4" />
+        GitHub
+      </a>
+      <span aria-hidden="true">·</span>
+      <a href="https://linkedin.com/in/yourhandle" class="inline-flex items-center gap-1.5 transition-colors hover:text-ink">
+        <SkillIcon name="linkedin" class="h-4 w-4" />
+        LinkedIn
+      </a>
+      <span aria-hidden="true">·</span>
+      <span>City, Country</span>
+    </div>
+  </header>
+
+  <section class="mt-12">
+    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">About</h2>
+    <div class="mt-4 space-y-4 leading-relaxed text-ink-soft">
+      <p>
+        Write a short summary here: who you are, what you build, and what you are
+        looking for. Two or three sentences is plenty.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Skills</h2>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        skills.map((skill) => (
+          <li class="inline-flex items-center gap-2 rounded-pill border border-line px-3 py-1.5 text-sm text-ink-soft transition-colors hover:text-ink">
+            <SkillIcon name={skill.icon} class="h-4 w-4" />
+            {skill.name}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Experience</h2>
+    <ol class="mt-4 space-y-8">
+      {
+        experience.map((job) => (
+          <li class="border-l border-line pl-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 class="font-semibold">
+                {job.role} · <span class="font-normal text-ink-soft">{job.company}</span>
+              </h3>
+              <span class="text-sm text-ink-soft">{job.period}</span>
+            </div>
+            <p class="mt-2 leading-relaxed text-ink-soft">{job.summary}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Education</h2>
+    <ul class="mt-4 space-y-6">
+      {
+        education.map((edu) => (
+          <li>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 class="font-semibold">{edu.degree}</h3>
+              <span class="text-sm text-ink-soft">{edu.period}</span>
+            </div>
+            <p class="mt-1 text-ink-soft">{edu.school}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </Layout>

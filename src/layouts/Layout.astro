@@ -18,6 +18,20 @@ const {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        var theme = 'system';
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark' || stored === 'system') {
+            theme = stored;
+          }
+        } catch (e) {
+          /* storage unavailable — keep system */
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href={"/favicon.svg?v=3"} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />

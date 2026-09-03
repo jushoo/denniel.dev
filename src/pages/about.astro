@@ -72,8 +72,7 @@ const education = [
     <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">About</h2>
     <div class="mt-4 space-y-4 leading-relaxed text-ink-soft">
       <p>
-        Write a short summary here: who you are, what you build, and what you are
-        looking for. Two or three sentences is plenty.
+        I'm DJ, I like building webapps and mobile apps. If I'm not coding, I'm probably riding my motorcycles
       </p>
     </div>
   </section>
@@ -92,39 +91,39 @@ const education = [
     </ul>
   </section>
 
-  <section class="mt-12">
-    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Experience</h2>
-    <ol class="mt-4 space-y-8">
-      {
-        experience.map((job) => (
-          <li class="border-l border-line pl-6">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 class="font-semibold">
-                {job.role} · <span class="font-normal text-ink-soft">{job.company}</span>
-              </h3>
-              <span class="text-sm text-ink-soft">{job.period}</span>
-            </div>
-            <p class="mt-2 leading-relaxed text-ink-soft">{job.summary}</p>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
+  <!-- <section class="mt-12"> -->
+  <!--   <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Experience</h2> -->
+  <!--   <ol class="mt-4 space-y-8"> -->
+  <!--     { -->
+  <!--       experience.map((job) => ( -->
+  <!--         <li class="border-l border-line pl-6"> -->
+  <!--           <div class="flex flex-wrap items-baseline justify-between gap-x-4"> -->
+  <!--             <h3 class="font-semibold"> -->
+  <!--               {job.role} · <span class="font-normal text-ink-soft">{job.company}</span> -->
+  <!--             </h3> -->
+  <!--             <span class="text-sm text-ink-soft">{job.period}</span> -->
+  <!--           </div> -->
+  <!--           <p class="mt-2 leading-relaxed text-ink-soft">{job.summary}</p> -->
+  <!--         </li> -->
+  <!--       )) -->
+  <!--     } -->
+  <!--   </ol> -->
+  <!-- </section> -->
 
-  <section class="mt-12">
-    <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Education</h2>
-    <ul class="mt-4 space-y-6">
-      {
-        education.map((edu) => (
-          <li>
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 class="font-semibold">{edu.degree}</h3>
-              <span class="text-sm text-ink-soft">{edu.period}</span>
-            </div>
-            <p class="mt-1 text-ink-soft">{edu.school}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <!--   <h2 class="text-sm font-semibold tracking-widest text-ink-soft uppercase">Education</h2> -->
+  <!-- <section class="mt-12"> -->
+  <!--   <ul class="mt-4 space-y-6"> -->
+  <!--     { -->
+  <!--       education.map((edu) => ( -->
+  <!--         <li> -->
+  <!--           <div class="flex flex-wrap items-baseline justify-between gap-x-4"> -->
+  <!--             <h3 class="font-semibold">{edu.degree}</h3> -->
+  <!--             <span class="text-sm text-ink-soft">{edu.period}</span> -->
+  <!--           </div> -->
+  <!--           <p class="mt-1 text-ink-soft">{edu.school}</p> -->
+  <!--         </li> -->
+  <!--       )) -->
+  <!--     } -->
+  <!--   </ul> -->
+  <!-- </section> -->
 </Layout>

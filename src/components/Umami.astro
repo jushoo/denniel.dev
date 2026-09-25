@@ -1,0 +1,35 @@
+---
+/**
+ * Umami analytics.
+ *
+ * The website ID (and optional custom script URL / allowed domains) are read
+ * from public environment variables so they never have to live in the repo.
+ *
+ * Set these in a local `.env` file (gitignored) and/or in your Cloudflare Pages
+ * project settings:
+ *
+ *   PUBLIC_UMAMI_WEBSITE_ID = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ *   PUBLIC_UMAMI_SRC        = https://cloud.umami.is/script.js   # optional
+ *   PUBLIC_UMAMI_DOMAINS    = denniel.dev                        # optional
+ *
+ * The component renders nothing when no website ID is configured, and is
+ * disabled in local dev (`astro dev`) so preview visits never hit Umami.
+ */
+const websiteId = import.meta.env.PROD
+  ? import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
+  : undefined;
+const src = import.meta.env.PUBLIC_UMAMI_SRC ?? 'https://cloud.umami.is/script.js';
+const domains = import.meta.env.PUBLIC_UMAMI_DOMAINS;
+---
+
+{
+  websiteId && (
+    <script
+      is:inline
+      defer
+      src={src}
+      data-website-id={websiteId}
+      data-domains={domains}
+    />
+  )
+}

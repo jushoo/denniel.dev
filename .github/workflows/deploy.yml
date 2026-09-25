@@ -29,6 +29,11 @@ jobs:
 
       - name: Build site
         run: pnpm build
+        env:
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+          # Optional overrides (set as repository variables if needed)
+          # PUBLIC_UMAMI_SRC: ${{ vars.PUBLIC_UMAMI_SRC }}
+          # PUBLIC_UMAMI_DOMAINS: ${{ vars.PUBLIC_UMAMI_DOMAINS }}
 
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
